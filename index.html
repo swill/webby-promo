@@ -36,7 +36,8 @@
       --radius-lg: 1.5rem;
       --shadow:    0 4px 24px rgba(26, 26, 46, 0.08);
       --shadow-lg: 0 12px 48px rgba(26, 26, 46, 0.14);
-    }
+      --font-funky: 'Protest Revolution', system-ui, sans-serif;
+}
 
     /* ─── Reset & Base ───────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -807,7 +808,7 @@
   </style>
   
   
-<meta name="keywords" content="web editor, standalone, user friendly"><link rel="icon" type="image/png" href="./assets/favicon.png"><link rel="apple-touch-icon" href="./assets/favicon.png"><style id="__webby-section-screenshots-styles">#screenshots {
+<style id="__gitqi-section-screenshots-styles">#screenshots {
   padding: var(--space-2xl) 0;
   background: var(--color-secondary);
   color: #fff;
@@ -861,7 +862,103 @@
   .screenshots-grid { grid-template-columns: 1fr; }
   .screenshot-item.featured { grid-column: unset; }
   .screenshot-item.featured img { aspect-ratio: 16/9; }
-}</style></head>
+}</style><meta name="keywords" content="web editor, standalone, user friendly"><link rel="icon" type="image/png" href="./assets/favicon.png"><link rel="apple-touch-icon" href="./assets/favicon.png"><style id="__gitqi-section-hero-styles">#hero {
+  padding: var(--space-2xl) 0 var(--space-xl);
+  background: linear-gradient(160deg, var(--color-bg) 55%, #ede9ff 100%);
+  overflow: hidden;
+  position: relative;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,99,255,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-accent-glow);
+  color: var(--color-accent);
+  border: 1px solid rgba(108,99,255,0.2);
+  border-radius: 2rem;
+  padding: 0.35rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+}
+.hero-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.hero-text h1 {
+  margin-bottom: var(--space-md);
+}
+.hero-text h1 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 480px;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  position: relative;
+  border-radius: var(--radius); /* Modified to match video's inline border-radius */
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+/* The img rule is no longer needed but kept for completeness based on context of reformatting.
+   It won't apply to the video. */
+.hero-image img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius); /* Modified to match video's inline border-radius */
+  border: 1px solid rgba(255,255,255,0.6);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-text p { max-width: 100%; }
+}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Protest+Revolution:wght@400&amp;display=swap"></head>
 <body style="">
 
   <!-- ─── Nav ─────────────────────────────────────────────────────────── -->
@@ -898,7 +995,7 @@
       <div class="hero-layout">
         <div class="hero-text">
           <div class="hero-badge" data-editable="">Free &amp; open source</div>
-          <h1 data-editable="">Edit your website<br><em>by clicking on it.</em></h1>
+          <h1 data-editable="">Edit your website<br><em>by <span style="font-family: var(--font-funky);">clicking</span> on it.</em></h1>
           <p data-editable="">Webby turns any static HTML file into an editable, publishable website — right in your browser. No code, no CMS, no developer needed.</p>
           <div class="hero-cta">
             <a href="#get-started" class="btn btn-primary">Get Started</a>
@@ -906,7 +1003,9 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="./assets/Screenshot 2026-03-16 at 8.49.19 PM.png" data-editable-image="" alt="Webby editor interface showing in-place text editing" style="cursor: pointer;">
+          <div data-editable-video="" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius);">
+            <iframe src="https://www.youtube.com/embed/_nuUtmhaUEc" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -1281,6 +1380,10 @@ generous whitespace.
       });
     }());
   </script>
+
+
+
+
 
 
 </body></html>
